@@ -1,0 +1,13 @@
+{%extends "base.html"%}
+{%load static%}
+
+{%block content%}
+
+<form action="{%url 'logout-user'%}" method="post">
+    {%csrf_token%} 
+    <button type="submit">logout</button>
+</form>
+
+{%endblock content%}
+    
+

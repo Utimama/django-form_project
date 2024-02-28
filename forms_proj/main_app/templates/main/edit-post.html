@@ -1,0 +1,21 @@
+{%extends "base.html"%}
+{%load static%}
+
+{%block content%}
+
+    <div>
+        <form action="" method="post">
+            {% csrf_token %}
+            <p style="color:red;">{{edit_form.non_field_errors}}</p>
+            {% for field in edit_form %}
+             <div>
+                <small style="color: red;">{{field.errors}}</small>
+                <label for="">{{field.label_tag}}</label>
+                {{field}}
+             </div>   
+            {% endfor%}
+            <input type="submit" value="edit Post"/>
+        </form>
+
+    </div>
+{%endblock content%}

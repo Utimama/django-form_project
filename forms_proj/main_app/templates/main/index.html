@@ -1,0 +1,60 @@
+{%extends "base.html"%}
+
+{%block content%}
+
+    <div>
+        <h2>studend register form </h2>
+        <form action="." method="Post">
+            {% csrf_token %}
+            {% for field in forms %}
+             <div>
+                <small>{{field.errors}}</small>
+                <label for="{{field.label_tag}}"></label>
+                {{field}}
+             </div>   
+            {% endfor%}
+            <input type="submit" value="submit">
+        </form>
+
+                
+                <!-- <label for="full_name">full Names</label>
+                <input type="text" placeholder="enter your full name" name="full_name">
+            </div>
+            <div>
+                <label for="email">Email</label>
+                <input type="email" placeholder="enter your email" name="email">
+            </div>
+            <div>
+                <label for="birth_date">Date of birth</label>
+                <input type="date" placeholder="date of birth" name="birth_date">
+            </div>
+            <div>
+                <label for="address">address</label>
+                <input type="text" placeholder="enter your address" name="address">
+            </div>
+            <div>
+                <label for="gender">Gender</label>
+                <select id="gender" name="gender">
+                    <option value="female">Female</option>
+                    <option value="male">Male</option> --
+     
+            -->
+        
+        
+        {%if students%}
+            {%for data in students %}
+            <ul>
+                <li>{{data.names}}</li>
+                <li>{{data.email}}</li>
+                <li>{{data.birth_date}}</li>
+                <li>{{data.address}}</li>
+                <li>{{data.gender}}</li>
+                <a href="{%url 'delete-post' data.id %}">delete post</a>
+                <a href="{%url 'edit-post' data.id %}">edit</a>
+            </ul>
+            {%endfor %}
+        {%else%}
+        <p>No students record yet</p>
+        {%endif%}
+    </div>
+{%endblock content%}
